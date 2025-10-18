@@ -16,7 +16,7 @@ def get_items():
 
 @app.post("/items", response_model=Item)
 def create_item(new_item: ItemCreate):
-    item = Item(id=len(items_db)+1, **new_item.dict())
+    item = Item(id=len(items_db)+1, done=False, **new_item.dict())  # done inicia en False
     items_db.append(item)
     return item
 
